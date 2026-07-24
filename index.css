@@ -131,6 +131,38 @@ section {
   color: var(--bold-black);
 }
 
+.btn-purple-brutal {
+  background: var(--deep-purple);
+  color: var(--bg-white);
+}
+
+.btn-purple-brutal:hover {
+  background: #3a1a63;
+  color: var(--bg-white);
+}
+
+.download-chip-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  font-size: 0.88rem;
+  font-weight: 800;
+  color: var(--bold-black);
+  background: var(--bg-white);
+  border: var(--brutal-border);
+  box-shadow: 2px 2px 0px var(--bold-black);
+  text-decoration: none;
+  transition: var(--transition-brutal);
+}
+
+.download-chip-btn:hover {
+  background: var(--neon-yellow);
+  transform: translate(-2px, -2px);
+  box-shadow: 4px 4px 0px var(--bold-black);
+  color: var(--bold-black);
+}
+
 .btn-icon {
   margin-right: 8px;
 }
@@ -403,8 +435,16 @@ nav a:hover, nav a.active {
 
 .hero-actions-brutal {
   display: flex;
-  gap: 1.25rem;
+  flex-wrap: nowrap;
+  gap: 0.8rem;
   margin-bottom: 3.5rem;
+  align-items: center;
+}
+
+.hero-actions-brutal .btn-brutal {
+  font-size: 0.95rem;
+  padding: 0.75rem 1.1rem;
+  white-space: nowrap;
 }
 
 .hero-meta-brutal {

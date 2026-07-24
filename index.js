@@ -274,11 +274,11 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     function handleFileSelected(file) {
-      const allowedExtensions = /(\.pdf|\.zip)$/i;
+      const allowedExtensions = /(\.hwp|\.pptx|\.pdf|\.zip)$/i;
       const maxSize = 50 * 1024 * 1024; // 50MB
 
       if (!allowedExtensions.exec(file.name)) {
-        alert('첨부파일은 PDF 또는 ZIP 형식만 업로드 가능합니다.');
+        alert('첨부파일은 HWP, PPTX, PDF 또는 ZIP 형식만 업로드 가능합니다.');
         fileInput.value = ''; // Reset input
         fileNamePreview.style.display = 'none';
         return;
@@ -349,25 +349,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
 
-  // --- 9. Guide Download Simulation ---
-  const downloadBtns = document.querySelectorAll('.btn-download-guide, #btn-download-guide');
-  downloadBtns.forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      e.preventDefault();
-      
-      // Create a mock download trigger
-      const fileName = '2026_K-Design_Concert_Guidelines.pdf';
-      const textContent = '2026 K-Design Concert Competition Guidelines & Application Form\n\n- Contest Topic: Value Creation in Local Communities (지역사회 가치 창출을 위한 공모전)\n- Submission Period: 2026.07.01 ~ 10.10\n- Hosted by: Incheon Metropolitan City\n- Managed by: IGDFA (인천경기디자인기업협회)\n\nThis is a simulated guidelines file download for testing.';
-      
-      const blob = new Blob([textContent], { type: 'text/plain' });
-      const link = document.createElement('a');
-      link.href = URL.createObjectURL(blob);
-      link.download = fileName;
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-      
-      alert('공모요강 및 신청서 파일(2026_K-Design_Concert_Guidelines.pdf)이 가상으로 다운로드되었습니다.');
-    });
-  });
+  // --- 9. File Download Handler ---
+  // Native HTML5 download links are configured directly on anchor elements
+  // (2026 디자인콘서트공모전안내 및 신청서_(성명).hwp & 2024 K-DCA 제안서양식(예시).pptx)
 });

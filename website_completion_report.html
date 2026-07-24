@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>제9회 2026 K-디자인콘서트 웹사이트 구축 완료보고서</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    @page {
+      size: A4;
+      margin: 20mm 25mm; /* Print Margin: Top/Bottom 20mm, Left/Right 25mm */
+    }
+
+    body {
+      font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+      color: #1e293b;
+      background-color: #f1f5f9;
+      line-height: 1.65;
+      padding: 50px 30px;
+    }
+
+    /* Action bar for printing/downloading */
+    .no-print-bar {
+      max-width: 1100px;
+      margin: 0 auto 25px auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #0f172a;
+      padding: 18px 30px;
+      border-radius: 10px;
+      color: #ffffff;
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.15);
+    }
+
+    .no-print-bar h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+
+    .btn-download {
+      background: #2563eb;
+      color: #ffffff;
+      border: none;
+      padding: 12px 24px;
+      font-size: 1rem;
+      font-weight: 700;
+      border-radius: 6px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      transition: all 0.2s ease;
+      box-shadow: 0 2px 6px rgba(37, 99, 235, 0.3);
+    }
+
+    .btn-download:hover {
+      background: #1d4ed8;
+      transform: translateY(-1px);
+    }
+
+    /* Paper styling with wider margins */
+    .report-paper {
+      max-width: 1100px;
+      margin: 0 auto;
+      background: #ffffff;
+      padding: 70px 85px; /* Wider Side Paddings (85px) */
+      border: 1px solid #cbd5e1;
+      box-shadow: 0 12px 35px rgba(0,0,0,0.06);
+      border-radius: 6px;
+    }
+
+    /* Document Header */
+    .doc-header {
+      text-align: center;
+      border-bottom: 3px double #0f172a;
+      padding-bottom: 30px;
+      margin-bottom: 40px;
+    }
+
+    .doc-header h1 {
+      font-size: 2.1rem;
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      color: #0f172a;
+      margin-bottom: 20px;
+    }
+
+    .meta-box {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px 24px;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      padding: 18px 26px;
+      border-radius: 8px;
+      text-align: left;
+      font-size: 0.95rem;
+    }
+
+    .meta-item strong {
+      color: #334155;
+      margin-right: 8px;
+    }
+
+    /* Section Styling */
+    .section-title {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: #0f172a;
+      border-left: 6px solid #2563eb;
+      padding-left: 14px;
+      margin: 45px 0 20px 0;
+    }
+
+    .subsection-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #1e293b;
+      margin: 25px 0 12px 0;
+    }
+
+    p {
+      font-size: 0.98rem;
+      color: #334155;
+      margin-bottom: 14px;
+      text-align: justify;
+      line-height: 1.7;
+    }
+
+    /* Tables */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      font-size: 0.95rem;
+    }
+
+    th, td {
+      border: 1px solid #cbd5e1;
+      padding: 12px 18px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #f1f5f9;
+      color: #0f172a;
+      font-weight: 700;
+    }
+
+    /* Alert Boxes */
+    .alert-box {
+      background: #eff6ff;
+      border-left: 5px solid #3b82f6;
+      padding: 18px 24px;
+      margin: 20px 0;
+      border-radius: 0 8px 8px 0;
+      font-size: 0.95rem;
+      color: #1e40af;
+      line-height: 1.7;
+    }
+
+    /* Code blocks */
+    code {
+      background: #f1f5f9;
+      padding: 3px 7px;
+      border-radius: 4px;
+      font-family: Consolas, monospace;
+      font-size: 0.9rem;
+      color: #0f172a;
+    }
+
+    pre {
+      background: #0f172a;
+      color: #38bdf8;
+      padding: 20px 24px;
+      border-radius: 8px;
+      overflow-x: auto;
+      font-size: 0.9rem;
+      font-family: Consolas, monospace;
+      margin: 20px 0;
+      line-height: 1.5;
+    }
+
+    /* Lists */
+    ul, ol {
+      padding-left: 24px;
+      margin-bottom: 20px;
+      color: #334155;
+      font-size: 0.98rem;
+    }
+
+    li {
+      margin-bottom: 8px;
+      line-height: 1.65;
+    }
+
+    /* Signatures Table */
+    .sign-section {
+      margin-top: 60px;
+      border-top: 2px solid #cbd5e1;
+      padding-top: 35px;
+    }
+
+    .sign-table {
+      width: 100%;
+      margin-top: 25px;
+    }
+
+    .sign-table th {
+      text-align: center;
+      background: #f8fafc;
+    }
+
+    .sign-table td {
+      height: 90px;
+      vertical-align: bottom;
+      text-align: center;
+      font-weight: 600;
+    }
+
+    /* Print styles */
+    @media print {
+      body {
+        background: #ffffff;
+        padding: 0;
+      }
+      .no-print-bar {
+        display: none !important;
+      }
+      .report-paper {
+        box-shadow: none;
+        border: none;
+        padding: 0;
+        max-width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Printable Action Bar -->
+  <div class="no-print-bar">
+    <div>
+      <h3>📄 완료보고서 인쇄 및 PDF 저장 (여백 확장 버전)</h3>
+      <p style="font-size: 0.88rem; color: #94a3b8; margin: 0;">좌우 여백을 시원하게 늘린 서식입니다. 버튼을 누르시면 PDF 저장 및 인쇄가 진행됩니다.</p>
+    </div>
+    <button class="btn-download" onclick="window.print()">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+      PDF 저장 / 레포트 인쇄
+    </button>
+  </div>
+
+  <div class="report-paper">
+    
+    <!-- Document Header -->
+    <div class="doc-header">
+      <h1>[완료보고서] 제9회 2026 K-디자인콘서트 웹사이트 구축 및 개편</h1>
+      <div class="meta-box">
+        <div class="meta-item"><strong>문서번호:</strong> IGDFA-2026-WEB-001</div>
+        <div class="meta-item"><strong>작성일자:</strong> 2026년 07월 24일</div>
+        <div class="meta-item"><strong>주최/주관:</strong> 인천광역시 / (사)인천경기디자인기업협회</div>
+        <div class="meta-item"><strong>보 고 자:</strong> 웹 서비스 구축 전담팀</div>
+      </div>
+    </div>
+
+    <!-- Section 1 -->
+    <h2 class="section-title">Ⅰ. 사업 개요</h2>
+    <p>본 사업은 인천광역시 및 (사)인천경기디자인기업협회가 주관하는 <strong>제9회 2026 K-디자인콘서트 공모전</strong>의 성공적 개최를 위해, 시민과 디자이너의 참여를 유도하고 공모 요강 안내, 작품 접수, 심사 및 결과 발표 전 과정을 종합 지원하는 전용 공공 디자인 플랫폼을 구축하는 것을 목적으로 합니다.</p>
+    
+    <table>
+      <thead>
+        <tr>
+          <th style="width: 25%;">구 분</th>
+          <th style="width: 75%;">내 용</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>사업명</strong></td>
+          <td>제9회 2026 K-디자인콘서트 웹사이트 구축 및 서버 배포</td>
+        </tr>
+        <tr>
+          <td><strong>서비스 도메인</strong></td>
+          <td><code>http://k-dc.kr</code> / <code>http://www.k-dc.kr</code></td>
+        </tr>
+        <tr>
+          <td><strong>서버 IP</strong></td>
+          <td><code>121.125.61.114</code> (Linux Nginx 웹서버 환경)</td>
+        </tr>
+        <tr>
+          <td><strong>웹서비스 경로</strong></td>
+          <td><code>/home/www/kdc</code></td>
+        </tr>
+        <tr>
+          <td><strong>공모 기간</strong></td>
+          <td>2026년 07월 01일 ~ 10월 10일 (18시 마감)</td>
+        </tr>
+        <tr>
+          <td><strong>결과 발표일</strong></td>
+          <td>2026년 11월 20일</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Section 2 -->
+    <h2 class="section-title">Ⅱ. 추진 실적 및 주요 과업 내역</h2>
+    
+    <div class="alert-box">
+      <strong>네오 브루탈리즘(Neo-Brutalism) 디자인 시스템 구축</strong><br>
+      강렬한 굵은 외곽선과 트렌디한 네온 파스텔 톤 컬러 팔레트(Neon Yellow, Lime, Deep Purple, Pixel Red)를 조합하여 현대적이고 참신한 공공 디자인 공모전의 정체성을 시각적으로 구현하였습니다.
+    </div>
+
+    <h3 class="subsection-title">1. 정보 구조 정립 및 주요 과업 반영</h3>
+    <ul>
+      <li><strong>HERO 섹션:</strong> 공모전 타이틀, 핵심 슬로건("신박한 생각으로 사회문제를 해결하다"), D-DAY 실시간 카운트다운 타이머, 서식 다운로드 및 접수 바로가기 버튼 배치.</li>
+      <li><strong>TIMELINE 섹션:</strong> 접수 ➔ 심사 ➔ 결과발표(11월 20일) ➔ 시상 및 전시(11월 중) 4단계 프로세스 시각화.</li>
+      <li><strong>AWARDS 섹션:</strong> 총 38개 팀, 총 상금 360만 원 규모 요약 및 카드/세부 시상표 구성 (대상 200만 원 및 시장상, 금상 100만 원, 은상, 동상, 특별상, 장려상).</li>
+      <li><strong>데이터 전수 보정:</strong> 인천국제디자인페어(INDEF) 행사 개최 월 및 전시 일정을 기존 12월에서 <strong><code>11월</code>로 전수 수정 완료</strong>.</li>
+      <li><strong>문의처 자간 수직 정렬:</strong> Flex Space-Between 속성을 부여해 '주소', '이메일', '문의전화' 항목의 첫 글자('주', '이', '문')와 끝 글자('소', '일', '화') 및 콜론(:)의 시작과 끝 수직선을 1px 오차 없이 완전 정렬.</li>
+      <li><strong>네비게이션 톤다운:</strong> 푸터 <code>NAVIGATION</code> 링크의 밑줄을 제거하고 차분한 회색(<code>#888888</code>)으로 변경.</li>
+      <li><strong>메인 로고 링크 탑재:</strong> 헤더 및 푸터 로고 클릭 시 최상단 메인 영역(<code>#hero</code>)으로 스무스 스크롤 이동하도록 설정.</li>
+    </ul>
+
+    <!-- Section 3 -->
+    <h2 class="section-title">Ⅲ. 시스템 구축 및 배포 현황</h2>
+    <p>타 시스템 및 웹 서비스 영역과의 간섭을 방지하고 보안성을 극대화하기 위해 독립 전용 디렉토리 <code>/home/www/kdc</code> 에 인프라를 구축하고 Nginx Server Block을 적용하였습니다.</p>
+
+<pre><code>server {
+    listen 80;
+    server_name k-dc.kr www.k-dc.kr 121.125.61.114;
+
+    root /home/www/kdc;
+    index index.html;
+
+    charset utf-8;
+
+    location / {
+        try_files $uri $uri/ /index.html;
+    }
+
+    # 격벽 구조 보안 설정 (.git, .env 등 숨김 파일 차단)
+    location ~ /\. {
+        deny all;
+        access_log off;
+        log_not_found off;
+    }
+
+    # 정적 자원 속도 최적화
+    location ~* \.(jpg|jpeg|png|gif|ico|css|js|hwp|pdf)$ {
+        expires 7d;
+        add_header Cache-Control "public, no-transform";
+    }
+}</code></pre>
+
+    <!-- Section 4 -->
+    <h2 class="section-title">Ⅳ. 기대 효과 및 결론</h2>
+    <ul>
+      <li><strong>시민 참여율 극대화:</strong> 직관적 UI/UX 구성으로 디자이너 및 일반 시민의 참여 문턱 완화.</li>
+      <li><strong>접수 편의성 증대:</strong> D-DAY 타이머, 공모요강 다운로드 및 웹하드 바로가기 이중 버튼 제공.</li>
+      <li><strong>안정적 시스템 가동:</strong> 격벽 구조 디렉토리 배포로 향후 수상작 발표 및 도록 업데이트 시 안정적 데이터 유지보수 가능.</li>
+    </ul>
+
+    <p style="margin-top: 30px;">본 <strong>제9회 2026 K-디자인콘서트 웹사이트 구축 프로젝트</strong>는 기획, 개발, 실서버 배포 및 도메인 연동 전 과정을 완벽하게 완수하였음을 보고합니다.</p>
+
+    <!-- Signatures -->
+    <div class="sign-section">
+      <table class="sign-table">
+        <thead>
+          <tr>
+            <th style="width: 50%;">작 성 자 (보 고 자)</th>
+            <th style="width: 50%;">확 인 자 (사업 책임자)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>웹 서비스 구축 전담팀 (인)</td>
+            <td>(사)인천경기디자인기업협회 담당자 (인)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+
+</body>
+</html>

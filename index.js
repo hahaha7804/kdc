@@ -171,12 +171,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const teamContainer = document.getElementById('team-members-container');
   const addMemberBtn = document.getElementById('btn-add-member-input');
   let memberCount = 0;
-  const MAX_MEMBERS = 3; // Total 4 members (1 leader + 3 members)
+  const MAX_MEMBERS = 4; // Total 5 members (1 leader + 4 members)
 
   if (addMemberBtn && teamContainer) {
     addMemberBtn.addEventListener('click', () => {
       if (memberCount >= MAX_MEMBERS) {
-        alert('팀원은 대표자 외 최대 3명(대표 포함 총 4인)까지 추가할 수 있습니다.');
+        alert('팀원은 대표자 외 최대 4명(대표 포함 총 5인)까지 추가할 수 있습니다.');
         return;
       }
 

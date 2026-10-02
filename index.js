@@ -351,5 +351,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // --- 9. File Download Handler ---
   // Native HTML5 download links are configured directly on anchor elements
-  // (2026 디자인콘서트공모전안내 및 신청서_(성명).hwp & 2024 K-DCA 제안서양식(예시).pptx)
+  // (2026 디자인콘서트공모전안내 및 신청서.hwp & 2026 K-DCA 제안서양식(예시).pptx)
 });

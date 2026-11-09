@@ -22,7 +22,7 @@
 
   <title>제9회 2026 K-디자인콘서트 - 사회문제 해결을 위한 아이디어 챌린지</title>
   
-  <link rel="stylesheet" href="./index.css">
+  <link rel="stylesheet" href="./index.css?v=20261109">
 </head>
 <body class="neo-brutalism-theme">
 
@@ -36,17 +36,17 @@
       <nav id="nav-menu">
         <ul>
           <li><a href="#hero" class="active">홈</a></li>
-          <li><a href="#winners" style="color: var(--pixel-red); font-weight: 900;">🏆 수상자 발표</a></li>
           <li><a href="#about">소개</a></li>
           <li><a href="#categories">공모분야</a></li>
           <li><a href="#timeline">일정</a></li>
           <li><a href="#awards">시상안내</a></li>
+          <li><a href="#register">접수하기</a></li>
           <li><a href="#faq">FAQ</a></li>
         </ul>
       </nav>
 
       <div class="cta-header">
-        <a href="#winners" class="btn btn-brutal btn-primary-brutal" style="background-color: var(--neon-yellow); color: var(--bold-black);">수상자 발표</a>
+        <a href="#register" class="btn btn-brutal btn-primary-brutal">공모 접수</a>
         <div class="menu-toggle" id="mobile-menu-btn" aria-label="Toggle menu" role="button">
           <span></span>
           <span></span>
@@ -193,234 +193,22 @@
       </div>
     </div>
 
-    <!-- Winners Announcement Brutalism Card -->
-    <div class="container winners-outer-container" id="winners">
-      <div class="winners-section-card fade-in-element">
-        <h2 class="timer-title" style="margin-bottom: 1.25rem;">
-          <img src="./ico_time.jpg" alt="Time Icon" class="timer-title-icon"> 공모 마감 &amp; 수상결과 공고
+    <!-- Countdown Timer Brutalism Card -->
+    <div class="container timer-outer-container">
+      <div class="countdown-card-brutal fade-in-element">
+        <h2 class="timer-title">
+          <img src="./ico_time.jpg" alt="Time Icon" class="timer-title-icon"> 공모 마감 D-DAY COUNTDOWN
         </h2>
-
-        <!-- Deadline Notice Banner (Matched with Screenshot) -->
-        <div style="font-size: 1.4rem; font-weight: 900; color: var(--pixel-red); padding: 1rem 2rem; border: var(--brutal-border); box-shadow: var(--brutal-shadow-s); background-color: var(--neon-yellow); margin: 0 auto 1.5rem; display: inline-block;">
-          공모전 접수가 마감되었습니다.
-        </div>
-
-        <!-- Download & Action Buttons -->
-        <div class="winners-cta-row" style="margin-bottom: 1.5rem;">
-          <a href="./수상 결과 공고.pdf" target="_blank" download="수상 결과 공고.pdf" class="btn-winners-download">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-              <polyline points="7 10 12 15 17 10"></polyline>
-              <line x1="12" y1="15" x2="12" y2="3"></line>
-            </svg>
+        <div class="countdown-timer-brutal" id="countdown">
+          <a href="./수상 결과 공고.pdf" download="수상 결과 공고.pdf" style="grid-column: span 4; font-size: 1.5rem; font-weight: 900; color: var(--pixel-red); padding: 1.5rem; border: var(--brutal-border); box-shadow: var(--brutal-shadow-s); background-color: var(--neon-yellow); text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 0.6rem; cursor: pointer;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
             수상결과 공고
           </a>
-          <button type="button" class="btn-winners-toggle" id="toggle-all-winners-btn" onclick="toggleWinnersAccordion()">
-            <span>전체 수상작 (특별상·장려상 40팀) 확인하기</span>
-            <span id="winners-toggle-arrow">▼</span>
-          </button>
         </div>
-
-        <!-- Red Progress Bar & Notice -->
-        <div class="countdown-progress-container" style="margin: 0 auto 1rem;">
-          <div class="countdown-progress-bar-brutal" style="width: 100%;"></div>
+        <div class="countdown-progress-container">
+          <div class="countdown-progress-bar-brutal" id="countdown-progress-bar" style="width: 100%;"></div>
         </div>
-        <p class="timer-bottom-text" style="margin-bottom: 2rem;">최종 마감 시각: 2026년 10월 10일(금) 18:00 | <strong>2026 K-디자인콘서트 수상 결과가 발표되었습니다. 상단 [수상결과 공고] 버튼을 통해 공고문(PDF)을 다운로드하실 수 있습니다.</strong></p>
-
-        <!-- Major Awards Showcase (대상 2팀, 금상 1팀) -->
-        <div class="major-awards-grid">
-          <!-- 대상 1 -->
-          <div class="award-box award-grand-1">
-            <div>
-              <span class="award-box-badge">대상 · 협회장상 (상금 200만 원)</span>
-              <h3 class="award-box-title">이주배경한말연구소</h3>
-              <p class="award-box-desc"><strong>한말톡 한국어</strong></p>
-            </div>
-          </div>
-
-          <!-- 대상 2 -->
-          <div class="award-box award-grand-2">
-            <div>
-              <span class="award-box-badge">대상 · 인천광역시장상</span>
-              <h3 class="award-box-title">가실 곳</h3>
-              <p class="award-box-desc">제물포구 고령 구민을 위한 청사건물 한줄 표기</p>
-            </div>
-          </div>
-
-          <!-- 금상 -->
-          <div class="award-box award-gold">
-            <div>
-              <span class="award-box-badge">금상</span>
-              <h3 class="award-box-title">말놓다</h3>
-              <p class="award-box-desc">블록, 화면, 대화로 전하는 민원 상담 책상</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Sub Awards Showcase (은상 2팀, 동상 3팀) -->
-        <div class="sub-awards-grid">
-          <!-- 은상 1 -->
-          <div class="sub-award-card sub-award-silver">
-            <span class="sub-award-badge">은상</span>
-            <h4 class="sub-award-title">미리 가보는 치과</h4>
-            <p class="sub-award-desc">발달장애 아동을 위한 치과 진료 체험 키트</p>
-          </div>
-          <!-- 은상 2 -->
-          <div class="sub-award-card sub-award-silver">
-            <span class="sub-award-badge">은상</span>
-            <h4 class="sub-award-title">다시, 탕</h4>
-            <p class="sub-award-desc">동네 목욕탕을 원도심 어르신의 씻고 쉬는 쉼터로</p>
-          </div>
-          <!-- 동상 1 -->
-          <div class="sub-award-card sub-award-bronze">
-            <span class="sub-award-badge">동상</span>
-            <h4 class="sub-award-title">TIDE CAP</h4>
-            <p class="sub-award-desc">기후위기 대응 솔루션</p>
-          </div>
-          <!-- 동상 2 -->
-          <div class="sub-award-card sub-award-bronze">
-            <span class="sub-award-badge">동상</span>
-            <h4 class="sub-award-title">할머니집</h4>
-            <p class="sub-award-desc">시니어카페</p>
-          </div>
-          <!-- 동상 3 -->
-          <div class="sub-award-card sub-award-bronze">
-            <span class="sub-award-badge">동상</span>
-            <h4 class="sub-award-title">골목접이 2.0</h4>
-            <p class="sub-award-desc">시간공유형 골목 배출 인프라</p>
-          </div>
-        </div>
-
-        <!-- Accordion for Special (10 teams) & Commendation (30 teams) -->
-        <div class="winners-accordion-panel" id="winners-accordion">
-          <div class="accordion-inner-grid">
-            <!-- 특별상 10팀 -->
-            <div>
-              <div class="accordion-column-title">
-                <span>⭐ 특별상 (10팀)</span>
-                <small style="font-size: 0.85rem; font-weight: normal; color: var(--text-muted);">가나다순</small>
-              </div>
-              <ul class="accordion-list">
-                <li class="accordion-item">
-                  <span class="accordion-item-num">01</span>
-                  <div class="accordion-item-content">
-                    <div class="accordion-item-name">쉼막</div>
-                    <div class="accordion-item-desc">환경미화원 대기시간 개선 프로젝트</div>
-                  </div>
-                </li>
-                <li class="accordion-item">
-                  <span class="accordion-item-num">02</span>
-                  <div class="accordion-item-content">
-                    <div class="accordion-item-name">기억마실</div>
-                    <div class="accordion-item-desc">지자체 치매예방 플랫폼</div>
-                  </div>
-                </li>
-                <li class="accordion-item">
-                  <span class="accordion-item-num">03</span>
-                  <div class="accordion-item-content">
-                    <div class="accordion-item-name">Brit</div>
-                    <div class="accordion-item-desc">고립·은둔 청년의 일상 회복을 돕는 XR 기반 서비스</div>
-                  </div>
-                </li>
-                <li class="accordion-item">
-                  <span class="accordion-item-num">04</span>
-                  <div class="accordion-item-content">
-                    <div class="accordion-item-name">빛으로 읽는 지하</div>
-                    <div class="accordion-item-desc">지하공간 보행 환경 시각화 솔루션</div>
-                  </div>
-                </li>
-                <li class="accordion-item">
-                  <span class="accordion-item-num">05</span>
-                  <div class="accordion-item-content">
-                    <div class="accordion-item-name">FORRING</div>
-                    <div class="accordion-item-desc">그루터기 보호 모듈</div>
-                  </div>
-                </li>
-                <li class="accordion-item">
-                  <span class="accordion-item-num">06</span>
-                  <div class="accordion-item-content">
-                    <div class="accordion-item-name">손드는 배수구</div>
-                    <div class="accordion-item-desc">침수 사전 경고 시스템</div>
-                  </div>
-                </li>
-                <li class="accordion-item">
-                  <span class="accordion-item-num">07</span>
-                  <div class="accordion-item-content">
-                    <div class="accordion-item-name">맞손</div>
-                    <div class="accordion-item-desc">쓰담</div>
-                  </div>
-                </li>
-                <li class="accordion-item">
-                  <span class="accordion-item-num">08</span>
-                  <div class="accordion-item-content">
-                    <div class="accordion-item-name">곁골목</div>
-                    <div class="accordion-item-desc">원도심 홀몸노인을 위한 돌봄 프로젝트</div>
-                  </div>
-                </li>
-                <li class="accordion-item">
-                  <span class="accordion-item-num">09</span>
-                  <div class="accordion-item-content">
-                    <div class="accordion-item-name">시그널릿</div>
-                    <div class="accordion-item-desc">고독사 예방 프로젝트</div>
-                  </div>
-                </li>
-                <li class="accordion-item">
-                  <span class="accordion-item-num">10</span>
-                  <div class="accordion-item-content">
-                    <div class="accordion-item-name">에코리 EcoRi</div>
-                    <div class="accordion-item-desc">저탄소 친환경 실천 도우미</div>
-                  </div>
-                </li>
-              </ul>
-            </div>
-
-            <!-- 장려상 30팀 -->
-            <div>
-              <div class="accordion-column-title">
-                <span>🎖️ 장려상 (30팀)</span>
-                <small style="font-size: 0.85rem; font-weight: normal; color: var(--text-muted);">가나다순</small>
-              </div>
-              <ul class="accordion-list">
-                <li class="accordion-item"><span class="accordion-item-num">01</span><div class="accordion-item-content"><div class="accordion-item-name">이어집</div><div class="accordion-item-desc">함께 나이 들어가는 집</div></div></li>
-                <li class="accordion-item"><span class="accordion-item-num">02</span><div class="accordion-item-content"><div class="accordion-item-name">RE:BREATH</div><div class="accordion-item-desc">휴대형 호흡 보조장치</div></div></li>
-                <li class="accordion-item"><span class="accordion-item-num">03</span><div class="accordion-item-content"><div class="accordion-item-name">에코픽</div><div class="accordion-item-desc">친환경 생활 통합 플랫폼</div></div></li>
-                <li class="accordion-item"><span class="accordion-item-num">04</span><div class="accordion-item-content"><div class="accordion-item-name">노하우</div><div class="accordion-item-desc">시니어딥보이스 범죄예방 프로그램</div></div></li>
-                <li class="accordion-item"><span class="accordion-item-num">05</span><div class="accordion-item-content"><div class="accordion-item-name">쉼터 길잡이 문패</div><div class="accordion-item-desc">마을 쉼터 안내 디자인</div></div></li>
-                <li class="accordion-item"><span class="accordion-item-num">06</span><div class="accordion-item-content"><div class="accordion-item-name">굴포터즈</div><div class="accordion-item-desc">천천한 마중</div></div></li>
-                <li class="accordion-item"><span class="accordion-item-num">07</span><div class="accordion-item-content"><div class="accordion-item-name">오늘 진료 한눈에 요약카드</div><div class="accordion-item-desc">어르신 맞춤형 의료 안내</div></div></li>
-                <li class="accordion-item"><span class="accordion-item-num">08</span><div class="accordion-item-content"><div class="accordion-item-name">머문자리</div><div class="accordion-item-desc">걷는 일상이 안부가 된다</div></div></li>
-                <li class="accordion-item"><span class="accordion-item-num">09</span><div class="accordion-item-content"><div class="accordion-item-name">RE:ON</div><div class="accordion-item-desc">청년 번아웃 회복 지원 프로젝트</div></div></li>
-                <li class="accordion-item"><span class="accordion-item-num">10</span><div class="accordion-item-content"><div class="accordion-item-name">주깨비</div><div class="accordion-item-desc">주안(JUAN)에서 주안(主眼)으로: 지나치는 주안에서 머무르는 주안으로</div></div></li>
-                <li class="accordion-item"><span class="accordion-item-num">11</span><div class="accordion-item-content"><div class="accordion-item-name">UNMUTE</div><div class="accordion-item-desc">교제폭력인식개선 프로젝트</div></div></li>
-                <li class="accordion-item"><span class="accordion-item-num">12</span><div class="accordion-item-content"><div class="accordion-item-name">메모리 페블</div><div class="accordion-item-desc">돌봄서비스 제품</div></div></li>
-                <li class="accordion-item"><span class="accordion-item-num">13</span><div class="accordion-item-content"><div class="accordion-item-name">리마인드</div><div class="accordion-item-desc">10대 청소년들을 위한 딥페이크 예방 프로젝트</div></div></li>
-                <li class="accordion-item"><span class="accordion-item-num">14</span><div class="accordion-item-content"><div class="accordion-item-name">그린워크</div><div class="accordion-item-desc">등하굣길 스마트 보행 서비스</div></div></li>
-                <li class="accordion-item"><span class="accordion-item-num">15</span><div class="accordion-item-content"><div class="accordion-item-name">TRIGO-NOKS</div><div class="accordion-item-desc">보성녹차 부산물 활용 업사이클링 베스밤</div></div></li>
-                <li class="accordion-item"><span class="accordion-item-num">16</span><div class="accordion-item-content"><div class="accordion-item-name">시간정거장</div><div class="accordion-item-desc">골목의 70면을 보고 듣는 다이얼</div></div></li>
-                <li class="accordion-item"><span class="accordion-item-num">17</span><div class="accordion-item-content"><div class="accordion-item-name">완벽하고 간편한 분리수거 테트라팩 패키지</div><div class="accordion-item-desc">친환경 패키지 디자인</div></div></li>
-                <li class="accordion-item"><span class="accordion-item-num">18</span><div class="accordion-item-content"><div class="accordion-item-name">그늘을 잇는 시장</div><div class="accordion-item-desc">도심 전통시장 그늘길 모듈</div></div></li>
-                <li class="accordion-item"><span class="accordion-item-num">19</span><div class="accordion-item-content"><div class="accordion-item-name">휠링</div><div class="accordion-item-desc">휠체어 사용자를 위한 내비게이션 앱</div></div></li>
-                <li class="accordion-item"><span class="accordion-item-num">20</span><div class="accordion-item-content"><div class="accordion-item-name">갯녹음 캠페인</div><div class="accordion-item-desc">BEFORE IT TURNS WHITE</div></div></li>
-                <li class="accordion-item"><span class="accordion-item-num">21</span><div class="accordion-item-content"><div class="accordion-item-name">페통맘</div><div class="accordion-item-desc">휴대용재떨이페통</div></div></li>
-                <li class="accordion-item"><span class="accordion-item-num">22</span><div class="accordion-item-content"><div class="accordion-item-name">일회용컵은 버리고, 버스는 배려로 채우고</div><div class="accordion-item-desc">대중교통 에티켓 디자인</div></div></li>
-                <li class="accordion-item"><span class="accordion-item-num">23</span><div class="accordion-item-content"><div class="accordion-item-name">두루미온</div><div class="accordion-item-desc">두루미가 지키는 생명의 길</div></div></li>
-                <li class="accordion-item"><span class="accordion-item-num">24</span><div class="accordion-item-content"><div class="accordion-item-name">다음한장</div><div class="accordion-item-desc">원도심 주민을 위한 공공서비스 이어하기</div></div></li>
-                <li class="accordion-item"><span class="accordion-item-num">25</span><div class="accordion-item-content"><div class="accordion-item-name">Shift-Handle</div><div class="accordion-item-desc">모두에게 맞춰지는 대중교통 손잡이</div></div></li>
-                <li class="accordion-item"><span class="accordion-item-num">26</span><div class="accordion-item-content"><div class="accordion-item-name">잠깐 쉬어도 됩니다</div><div class="accordion-item-desc">도심 속 휴식 배려 디자인</div></div></li>
-                <li class="accordion-item"><span class="accordion-item-num">27</span><div class="accordion-item-content"><div class="accordion-item-name">스텝스</div><div class="accordion-item-desc">직대딩을 위한 대학생활 올인원 앱</div></div></li>
-                <li class="accordion-item"><span class="accordion-item-num">28</span><div class="accordion-item-content"><div class="accordion-item-name">쉼표길_COMMA_ROUTE</div><div class="accordion-item-desc">보행자 안심 이동 동선 프로젝트</div></div></li>
-                <li class="accordion-item"><span class="accordion-item-num">29</span><div class="accordion-item-content"><div class="accordion-item-name">마주장</div><div class="accordion-item-desc">내 주문을 보고 고치는 장보기</div></div></li>
-                <li class="accordion-item"><span class="accordion-item-num">30</span><div class="accordion-item-content"><div class="accordion-item-name">Swells</div><div class="accordion-item-desc">해양 생태계 공공 디자인 솔루션</div></div></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <div class="winners-footer-notice">
-          <p><strong>※ 시상식 및 수상작 전시 안내</strong></p>
-          <p>전시 및 시상 일정: 2026년 11월 중 인천국제디자인페어(INDEF) 행사장 (수상팀 개별 상세 안내 예정)</p>
-          <p>수상자 명단 원본 공고문은 상단의 [수상자 명단 다운로드 (PDF)] 버튼을 통해 내려받으실 수 있습니다.</p>
-        </div>
+        <p class="timer-bottom-text">최종 마감 시각: 2026년 10월 10일(금) 18:00 (마감일 시스템 접속 폭주 우려, 사전 접수 권장)</p>
       </div>
     </div>
   </section>
@@ -970,6 +758,6 @@
     </div>
   </footer>
 
-  <script src="./index.js"></script>
+  <script src="./index.js?v=20261109"></script>
 </body>
 </html>

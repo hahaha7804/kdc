@@ -57,25 +57,56 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
 
-  // --- 3. Winners Accordion Toggle Function ---
-  window.toggleWinnersAccordion = function() {
-    const panel = document.getElementById('winners-accordion');
-    const arrow = document.getElementById('winners-toggle-arrow');
-    const btn = document.getElementById('toggle-all-winners-btn');
-    if (!panel) return;
-    
-    panel.classList.toggle('active');
-    const isExpanded = panel.classList.contains('active');
-    if (arrow) {
-      arrow.textContent = isExpanded ? '▲' : '▼';
-    }
-    if (btn) {
-      const spanText = btn.querySelector('span:first-child');
-      if (spanText) {
-        spanText.textContent = isExpanded ? '전체 수상작 목록 접기' : '전체 수상작 (특별상·장려상 40팀) 확인하기';
+  // --- 3. Dynamic Countdown Timer (October 10 Deadline) ---
+  // Poster deadline: 2026-10-10 18:00 KST
+  const countdownDate = new Date('2026-10-10T18:00:00+09:00').getTime();
+  const startDate = new Date('2026-07-01T00:00:00+09:00').getTime();
+
+  function updateCountdown() {
+    const now = new Date().getTime();
+    const distance = countdownDate - now;
+
+    if (distance < 0) {
+      const timerElement = document.getElementById('countdown');
+      if (timerElement) {
+        timerElement.innerHTML = `<a href="./수상 결과 공고.pdf" download="수상 결과 공고.pdf" style="grid-column: span 4; font-size: 1.5rem; font-weight: 900; color: var(--pixel-red); padding: 1.5rem; border: var(--brutal-border); box-shadow: var(--brutal-shadow-s); background-color: var(--neon-yellow); text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 0.6rem; cursor: pointer;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>수상결과 공고</a>`;
       }
+      const progressBar = document.getElementById('countdown-progress-bar');
+      if (progressBar) {
+        progressBar.style.width = '100%';
+      }
+      return;
     }
-  };
+
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    const dEl = document.getElementById('days');
+    const hEl = document.getElementById('hours');
+    const mEl = document.getElementById('minutes');
+    const sEl = document.getElementById('seconds');
+
+    if (dEl) dEl.innerText = String(days).padStart(2, '0');
+    if (hEl) hEl.innerText = String(hours).padStart(2, '0');
+    if (mEl) mEl.innerText = String(minutes).padStart(2, '0');
+    if (sEl) sEl.innerText = String(seconds).padStart(2, '0');
+
+    // Calculate Progress Bar Width
+    const totalDuration = countdownDate - startDate;
+    const elapsed = now - startDate;
+    const percent = Math.min(100, Math.max(0, (elapsed / totalDuration) * 100));
+    
+    const progressBar = document.getElementById('countdown-progress-bar');
+    if (progressBar) {
+      progressBar.style.width = `${percent}%`;
+    }
+  }
+
+  // Run immediately and then every second
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
 
 
   // --- 4. Intersection Observer for Scroll Entrance Motion ---

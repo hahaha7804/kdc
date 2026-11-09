@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (distance < 0) {
       const timerElement = document.getElementById('countdown');
       if (timerElement) {
-        timerElement.innerHTML = `<a href="./수상 결과 공고.pdf" download="수상 결과 공고.pdf" style="grid-column: span 4; font-size: 1.5rem; font-weight: 900; color: var(--pixel-red); padding: 1.5rem; border: var(--brutal-border); box-shadow: var(--brutal-shadow-s); background-color: var(--neon-yellow); text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 0.6rem; cursor: pointer;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>수상결과 공고</a>`;
+        timerElement.innerHTML = `<a href="./winners_2026.pdf" download="수상 결과 공고.pdf" onclick="return downloadWinnersPdf(event)" style="grid-column: span 4; font-size: 1.5rem; font-weight: 900; color: var(--pixel-red); padding: 1.5rem; border: var(--brutal-border); box-shadow: var(--brutal-shadow-s); background-color: var(--neon-yellow); text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 0.6rem; cursor: pointer;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>수상결과 공고</a>`;
       }
       const progressBar = document.getElementById('countdown-progress-bar');
       if (progressBar) {
@@ -104,9 +104,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // Run immediately and then every second
+  // Run once on load
   updateCountdown();
-  setInterval(updateCountdown, 1000);
 
 
   // --- 4. Intersection Observer for Scroll Entrance Motion ---

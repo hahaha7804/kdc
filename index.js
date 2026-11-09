@@ -57,56 +57,25 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
 
-  // --- 3. Dynamic Countdown Timer (October 10 Deadline) ---
-  // Poster deadline: 2026-10-10 18:00 KST
-  const countdownDate = new Date('2026-10-10T18:00:00+09:00').getTime();
-  const startDate = new Date('2026-07-01T00:00:00+09:00').getTime();
-
-  function updateCountdown() {
-    const now = new Date().getTime();
-    const distance = countdownDate - now;
-
-    if (distance < 0) {
-      const timerElement = document.getElementById('countdown');
-      if (timerElement) {
-        timerElement.innerHTML = `<div style="grid-column: span 4; font-size: 1.5rem; font-weight: 900; color: var(--pixel-red); padding: 1.5rem; border: var(--brutal-border); box-shadow: var(--brutal-shadow-s); background-color: var(--neon-yellow);">공모전 접수가 마감되었습니다.</div>`;
-      }
-      const progressBar = document.getElementById('countdown-progress-bar');
-      if (progressBar) {
-        progressBar.style.width = '100%';
-      }
-      return;
-    }
-
-    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-    const dEl = document.getElementById('days');
-    const hEl = document.getElementById('hours');
-    const mEl = document.getElementById('minutes');
-    const sEl = document.getElementById('seconds');
-
-    if (dEl) dEl.innerText = String(days).padStart(2, '0');
-    if (hEl) hEl.innerText = String(hours).padStart(2, '0');
-    if (mEl) mEl.innerText = String(minutes).padStart(2, '0');
-    if (sEl) sEl.innerText = String(seconds).padStart(2, '0');
-
-    // Calculate Progress Bar Width
-    const totalDuration = countdownDate - startDate;
-    const elapsed = now - startDate;
-    const percent = Math.min(100, Math.max(0, (elapsed / totalDuration) * 100));
+  // --- 3. Winners Accordion Toggle Function ---
+  window.toggleWinnersAccordion = function() {
+    const panel = document.getElementById('winners-accordion');
+    const arrow = document.getElementById('winners-toggle-arrow');
+    const btn = document.getElementById('toggle-all-winners-btn');
+    if (!panel) return;
     
-    const progressBar = document.getElementById('countdown-progress-bar');
-    if (progressBar) {
-      progressBar.style.width = `${percent}%`;
+    panel.classList.toggle('active');
+    const isExpanded = panel.classList.contains('active');
+    if (arrow) {
+      arrow.textContent = isExpanded ? '▲' : '▼';
     }
-  }
-
-  // Run immediately and then every second
-  updateCountdown();
-  setInterval(updateCountdown, 1000);
+    if (btn) {
+      const spanText = btn.querySelector('span:first-child');
+      if (spanText) {
+        spanText.textContent = isExpanded ? '전체 수상작 목록 접기' : '전체 수상작 (특별상·장려상 40팀) 확인하기';
+      }
+    }
+  };
 
 
   // --- 4. Intersection Observer for Scroll Entrance Motion ---
